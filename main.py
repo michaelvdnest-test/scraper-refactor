@@ -1,44 +1,4 @@
-r"""This module looks up bibliographic information from directories, csv files and pandas databases.
-From a .csv file input, you can get:
-    - a folder of .pdf downloads (experimental).
-    - a pandas dataframe
-    - another .csv file
-From a pandas dataframe file input, you can get:
-    - a folder of .pdf downloads (experimental).
-    - another pandas dataframe, but the citations of the input are each returned with their own citation information.
-From a folder input, you can get:
-    - a pandas dataframe
-    - a .csv file
-"""
-
-# ==============================================
-#    SPECIAL THANKS
-#
-#    Michele Cotrufo
-#    Nathan Lippi
-#    Jon Watson Rooney
-#    Colin Meret
-#    ArjanCodes
-#    James Murphy
-#    Micael Jarniac
-#
-#    ----------------Maintainer----------------
-#    John Fallot
-#
-#    ----------------License----------------
-#    The MIT License [https://opensource.org/licenses/MIT]
-#    Copyright (c) 2021 John Fallot
-# ==============================================
-
-# ==============================================
-#      IMPORTS
-# ==============================================
-
-# File Structure Related Imports
 import __future__
-
-__version__ = "1.01"
-__author__ = "John Fallot"
 
 import datetime
 import json
@@ -583,7 +543,7 @@ def main():
     file_request = FileRequest(target="./papers", slookup_key=False)
     print(file_request.__class__.__name__)
     results = file_request.fetch_terms()
-    texport(results)
+    export(results)
     elapsed = time.perf_counter() - start
     msg_timestamp = f"\n[sciscraper]: Extraction finished in {elapsed} seconds.\n"
     logging.info(msg_timestamp)
